@@ -1,0 +1,36 @@
+@import "../variables.scss";
+
+.header{
+    display: flex;
+    padding: clamp(10px, 1%, 20px) clamp(20px, 1%, 40px);
+    color: $mainColor;
+    &__nav{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        &-item{
+            font-size: clamp(12px, 1.3rem, 50px);
+            font-weight: 500;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            flex-grow: 1;
+            &>img{
+                height: clamp(2rem, 4rem, 100px);
+            }
+        }
+        &-logo{
+            flex-grow: 1.15;
+        }
+        &-lang{
+            flex-grow: 1.15;
+        }
+        &-personal{
+            flex-grow: 1.15;
+            &>img{
+                height: clamp(1rem, 3rem, 80px);
+            }
+        }
+    }
+}

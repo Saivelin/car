@@ -1,0 +1,25 @@
+@import "../variables.scss";
+
+.filter{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background-color: $mainBgColorLight;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.521);
+    border-radius: 8px;
+    padding: clamp(30px, 3%, 50px);
+    gap: clamp(5px, 2rem, 20px);
+    &__select{
+        
+        &>*{
+            background-color: $mainBgColorLight !important;
+            border-radius: 8px !important;
+        }
+    }
+    &__btn{
+        background-color: $darkMainColor;
+        color: $mainBgColor;
+        border-radius: 8px;
+        padding: clamp(10px, .7rem, 30px);
+    }
+}
