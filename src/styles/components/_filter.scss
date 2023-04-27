@@ -3,7 +3,7 @@
 .filter{
     display: grid;
     height: 100%;
-    max-height: clamp(300px, 50vh, 400px);
+    max-height: clamp(300px, 48vh, 392.5px);
     grid-column-start: 1;
     grid-column-end: 3;
     background-color: $mainBgColorLight;
@@ -14,16 +14,19 @@
     position: sticky;
     top: clamp(10px, 1rem, 30px);
     &__select{
-        
         &>*{
             background-color: $mainBgColorLight !important;
             border-radius: 8px !important;
         }
     }
     &__btn{
+        font-size: clamp(12px, 25px, 1rem);
         background-color: $darkMainColor;
         color: $mainBgColor;
         border-radius: 8px;
         padding: clamp(10px, .7rem, 30px);
+        @media (max-width: 788px) {
+            font-size: clamp(12px, 12px, 1rem);
+        }
     }
 }
