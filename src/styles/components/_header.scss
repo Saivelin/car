@@ -21,6 +21,9 @@
                 height: clamp(2rem, 4rem, 100px);
             }
         }
+        &-active{
+            border-bottom: 2px $mainColor solid; 
+        }
         &-logo{
             flex-grow: 1.15;
         }

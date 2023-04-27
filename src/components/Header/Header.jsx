@@ -4,17 +4,21 @@ const Header = () => {
     return (
         <header className="header">
             <nav className="header__nav">
-                <Link href={"/"} className="header__nav-item header__nav-lang">RU</Link>
-                <Link href={"/"} className="header__nav-item">Объявления</Link>
-                <Link href={"/"} className="header__nav-item">Каталог</Link>
-                <Link href={"/"} className="header__nav-item header__nav-logo">
-                    <img src="/logo.webp" alt="car-tron" />
-                </Link>
-                <Link href={"/"} className="header__nav-item">Диллеры</Link>
-                <Link href={"/"} className="header__nav-item">Услуги</Link>
-                <Link href={"/"} className="header__nav-item header__nav-personal">
-                    <img src="/personal.webp" alt="Личный кабинет" />
-                </Link>
+                <div className="header__nav-item header__nav-lang"><Link href={"/"} className="">RU</Link></div>
+                <div className="header__nav-item"><Link href={"/"} className="header__nav-active">Объявления</Link></div>
+                <div className="header__nav-item"><Link href={"/"} className="">Каталог</Link></div>
+                <div className="header__nav-item header__nav-logo">
+                    <Link href={"/"} className="">
+                        <img src="/logo.webp" alt="car-tron" />
+                    </Link>
+                </div>
+                <div className="header__nav-item"><Link href={"/"}>Диллеры</Link></div>
+                <div className="header__nav-item"><Link href={"/"}>Услуги</Link></div>
+                <div className="header__nav-item header__nav-personal">
+                    <Link href={"/"} className="">
+                        <img src="/personal.webp" alt="Личный кабинет" />
+                    </Link>
+                </div>
             </nav>
         </header>
     );
