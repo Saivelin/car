@@ -1,0 +1,37 @@
+@import "../variables.scss";
+
+.catalogTiles{
+    display: grid;
+    grid-column-start: 3;
+    grid-column-end: 6;
+    gap: clamp(10px, 3%, 30px);
+    &-once{
+        grid-template-columns: 1fr;
+    }
+    &-three{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.catalogTile{
+    border-radius: 8px;
+    background-color: $mainBgColor;
+    box-shadow: 0 0 30px black;
+    &__about{
+        width: 100%;
+        padding: clamp(10px, 2%, 20px);
+        &-around{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    &__price{
+        width: 100%;
+        background-color: $darkMainColor;
+        color: $mainBgColor;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: clamp(10px, 10%, 30px);
+        padding: clamp(5px, .1rem, 30px) 0;
+    }
+}

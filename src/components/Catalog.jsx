@@ -1,12 +1,11 @@
+import CatalogTiles from "./CatalogTiles";
 import Filters from "./Filters";
 
 const Catalog = () => {
     return (
         <div className='catalog'>
             <Filters />
-            <div>1</div>
-            <div>1</div>
-            <div>2</div>
+            <CatalogTiles />
         </div>
     );
 };

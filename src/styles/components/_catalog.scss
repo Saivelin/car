@@ -2,5 +2,5 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     margin: 10px clamp(30px, 5%, 200px);
-    column-gap: clamp(10px, 5%, 100px);
+    column-gap: clamp(10px, 2%, 100px);
 }

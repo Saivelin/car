@@ -2,6 +2,8 @@
 
 .filter{
     display: grid;
+    height: 100%;
+    max-height: clamp(300px, 50vh, 400px);
     grid-column-start: 1;
     grid-column-end: 3;
     background-color: $mainBgColorLight;
@@ -9,6 +11,8 @@
     border-radius: 8px;
     padding: clamp(30px, 3%, 50px);
     gap: clamp(5px, 2rem, 20px);
+    position: sticky;
+    top: clamp(10px, 1rem, 30px);
     &__select{
         
         &>*{
