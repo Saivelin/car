@@ -21,7 +21,7 @@ const CatalogTile = ({ tile }) => {
                         <p>{tile.fuel}</p>
                     </div>
                 </div>
-                <p className='catalogTile__price'>{tile.price}₽</p>
+                <p className='catalogTile__price'>{(tile.price).toLocaleString()}₽</p>
             </div>
         </div>
     );

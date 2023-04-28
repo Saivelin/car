@@ -23,9 +23,12 @@
 .catalogTile{
     border-radius: 8px;
     background-color: $mainBgColor;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.356);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.256);
     &__img{
         width: 100%;
+    }
+    &__title{
+        font-weight: 400;
     }
     &__about{
         width: 100%;
@@ -43,5 +46,6 @@
         border-radius: 5px;
         margin-top: clamp(10px, 10%, 30px);
         padding: clamp(5px, .1rem, 30px) 0;
+        font-weight: 500;
     }
 }

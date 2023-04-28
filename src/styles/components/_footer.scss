@@ -12,6 +12,9 @@
             display: grid;
             row-gap: 10px;
             justify-self: center;
+            &>p{
+                font-weight: 300;
+            }
             &>h4{
                 font-weight: 500;
                 font-size: 1.6em;
@@ -39,9 +42,7 @@
         &-society{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            align-items: center;
             &>img{
-                justify-self: center;
                 max-height: 40px;
             }
         }

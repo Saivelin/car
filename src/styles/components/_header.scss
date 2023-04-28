@@ -17,6 +17,9 @@
             text-align: center;
             justify-content: center;
             flex-grow: 1;
+            &>*{
+                font-weight: 400;
+            }
             &>img{
                 height: clamp(2rem, 4rem, 100px);
             }
