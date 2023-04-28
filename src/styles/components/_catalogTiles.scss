@@ -49,3 +49,25 @@
         font-weight: 500;
     }
 }
+
+
+.catalogTile-doubled{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr .1fr;
+    height: 100%;
+    &>.catalogTile__price{
+        align-self: center;
+        margin-bottom: 10px;
+    }
+    .catalogTile__about{
+        width: 100%;
+        padding: clamp(10px, 2%, 20px);
+        &-around{
+            display: grid;
+            row-gap: 10px;
+        }
+    }
+}

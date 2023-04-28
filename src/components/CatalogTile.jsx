@@ -1,29 +1,40 @@
-import React from 'react';
-
-const CatalogTile = ({ tile }) => {
+const CatalogTile = ({ tile, doubled }) => {
     console.log(tile)
     return (
-        <div className='catalogTile'>
+        <div className={doubled === true ? "catalogTile catalogTile-doubled" : "catalogTile"}>
             <img src={tile.img} alt={tile.title} className='catalogTile__img' />
             <div className="catalogTile__about">
                 <h5 className='catalogTile__title'>{tile.title}</h5>
                 <div className=''>
+                    {doubled === true ?
+                        <div className='catalogTile__about-around'>
+                            <p>{doubled === true && tile.generation ? "Поколение: " + String(tile.generation) : tile.year}</p>
+                            <p>{doubled === true && tile.shiftBoxType ? "Коробка: " + String(tile.shiftBoxType) : tile.complication}</p>
+                        </div>
+                        :
+                        ""
+                    }
                     <div className='catalogTile__about-around'>
-                        <p>{tile.year}</p>
-                        <p>{tile.complication}</p>
+                        <p>{doubled === true ? "Год выпуска: " + String(tile.year) : tile.year}</p>
+                        <p>{doubled === true ? "Кузов: " + String(tile.complication) : tile.complication}</p>
                     </div>
                     <div className='catalogTile__about-around'>
-                        <p>{tile.mileage}км</p>
-                        <p>{tile.type}</p>
+                        <p>{doubled === true ? "Пробег: " + String(tile.mileage) : tile.mileage}км</p>
+                        <p>{doubled === true ? "Тип: " + String(tile.type) : tile.type}</p>
                     </div>
                     <div className='catalogTile__about-around'>
-                        <p>{tile.consumption}</p>
-                        <p>{tile.fuel}</p>
+                        <p>{doubled === true ? "Расход: " + String(tile.consumption) : tile.consumption}</p>
+                        <p>{doubled === true ? "Топливо: " + String(tile.fuel) : tile.fuel}</p>
                     </div>
                 </div>
-                <p className='catalogTile__price'>{(tile.price).toLocaleString()}₽</p>
+                {!doubled ? <p className='catalogTile__price'>{(tile.price).toLocaleString()}₽</p> : ""}
             </div>
-        </div>
+            {doubled === true ?
+                <p className='catalogTile__price'>{(tile.price).toLocaleString()}₽</p>
+                :
+                ""
+            }
+        </div >
     );
 };
 

@@ -10,13 +10,15 @@ const CatalogTiles = () => {
         type: "Седан",
         consumption: "4.4л / 456 л.с.",
         fuel: "Бензин",
-        price: 12995000
+        price: 12995000,
+        generation: "Поколение: vi (F90) рестайлинг",
+        shiftBox: "Автомат",
     }]
     console.log(test)
 
     return (
         <div className="catalogTiles catalogTiles-three">
-            <CatalogTile tile={test[0]} />
+            <CatalogTile tile={test[0]} doubled={true} />
             <CatalogTile tile={test[0]} />
             <CatalogTile tile={test[0]} />
             <CatalogTile tile={test[0]} />
