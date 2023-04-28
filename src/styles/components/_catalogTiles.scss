@@ -2,8 +2,9 @@
 
 .catalogTiles{
     display: grid;
-    grid-column-start: 3;
-    grid-column-end: 6;
+    grid-column-start: 4;
+    grid-column-end: 12;
+    height: 100%;
     gap: clamp(10px, 3%, 30px);
     &-once{
         grid-template-columns: 1fr;
@@ -22,7 +23,7 @@
 .catalogTile{
     border-radius: 8px;
     background-color: $mainBgColor;
-    box-shadow: 0 0 30px black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.356);
     &__img{
         width: 100%;
     }
