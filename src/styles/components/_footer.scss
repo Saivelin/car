@@ -1,6 +1,7 @@
 @import "../variables.scss";
 .footer{
-    &__main{
+        margin-top: 5%;
+        &__main{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         background: linear-gradient(0.25turn, $darkMainColor, $darkDarkMainColor);
@@ -15,6 +16,33 @@
                 font-weight: 500;
                 font-size: 1.6em;
                 color: white;
+            }
+        }
+    }
+    &__footer{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: clamp(10px, 2%, 30px) clamp(40px, 15%, 20%);
+        &-item{
+            color: $darkMainColor;
+            display: grid;
+            justify-content: center;
+            font-weight: 400;
+            font-size: 1.1rem;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-right: $darkMainColor 1px solid;
+        }
+        &-classmates{
+            margin-left: 25px;
+        }
+        &-society{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            &>img{
+                justify-self: center;
+                max-height: 40px;
             }
         }
     }
