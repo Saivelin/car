@@ -13,7 +13,7 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className="header__nav-item"><Link href={"/"}>Диллеры</Link></div>
-                <div className="header__nav-item"><Link href={"/"}>Услуги</Link></div>
+                <div className="header__nav-item"><Link href={"/"}>Запчасти</Link></div>
                 <div className="header__nav-item header__nav-personal">
                     <Link href={"/"} className="">
                         <img src="/personal.webp" alt="Личный кабинет" />

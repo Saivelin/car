@@ -1,0 +1,28 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+.userPageAddAnnouncement{
+    padding: max(20px, 5%);
+    display: grid;
+    row-gap: 30px;
+    color: $mainBgColor;
+    h5{
+        font-size: max(16px,1.6rem);
+        font-weight: 600;
+    }
+    &__about{
+        display: grid;
+        gap: 10px;
+    }
+    &__createBtn{
+        padding: 15px;
+        border-radius: 10px;
+        @include box-shadow_dark-white;
+        transition: 1.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+        font-size: max(16px, 1.3rem);
+        font-weight: 400;
+        &:hover{
+            box-shadow: -5px -5px 14px rgba(255, 255, 255, 0.129), 5px 5px 14px rgba(0, 0, 0, 0.129)
+        }
+    }
+}

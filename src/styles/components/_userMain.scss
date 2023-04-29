@@ -1,0 +1,33 @@
+@import "../variables.scss";
+
+.userMain{
+    background: linear-gradient(0.25turn,#4A5368, #242730);
+    border-radius: 35px;
+    color: $mainBgColor;
+    padding: clamp(10px, 2%, 200px) clamp(10px,12.5%,350px);
+    display: grid;
+    grid-template-columns: 1fr 2.4fr 1fr;
+    column-gap: max(20px, 5%);
+}
+
+.userProfile{
+    padding: clamp(20px, 15%, 300px) clamp(20px, 0%, 300px);
+    background-color: #464F63;
+    align-items: center;
+    display: grid;
+    box-shadow: -5px -5px 14px rgba(255, 255, 255, 0.329), 5px 5px 14px rgba(0, 0, 0, 0.329);
+    border-radius: 10px;
+    &__logo{
+        height: auto;
+        width: 100%;
+    }
+    &__name{
+        font-size: clamp(16px, 1.5rem, 48px);
+        text-align: center;
+        align-items: center;
+        height: 100%;
+        display: grid;
+        align-self: center;
+        margin-top: 15%;
+    }
+}
