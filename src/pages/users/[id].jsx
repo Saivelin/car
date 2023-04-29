@@ -1,5 +1,6 @@
 import UserMain from "@/components/UserMain";
 import UserPageAddAnnouncement from "@/components/UserPageAddAnnouncement";
+import YourAnnouncement from "@/components/YourAnnouncement";
 import { useRouter } from "next/router";
 
 const Users = () => {
@@ -9,6 +10,7 @@ const Users = () => {
         <div className="userMain">
             <UserMain />
             <UserPageAddAnnouncement />
+            <YourAnnouncement />
         </div>
     );
 };

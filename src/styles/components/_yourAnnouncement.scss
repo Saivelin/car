@@ -1,0 +1,21 @@
+.yourAnnouncement{
+    display: grid;
+    h4{
+        font-size: max(16px, 1.7rem);
+        text-align: center;
+    }
+    &__sliderOfMain{
+        width: 100%;
+        margin: 0;
+        &>*{
+            color: black;
+        }
+    }
+    &__sliderWrapper{
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        column-gap: 5px;
+        margin-bottom: 10%;
+    }
+}

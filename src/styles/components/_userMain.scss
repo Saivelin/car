@@ -6,7 +6,7 @@
     color: $mainBgColor;
     padding: clamp(10px, 2%, 200px) clamp(10px,12.5%,350px);
     display: grid;
-    grid-template-columns: 1fr 2.4fr 1fr;
+    grid-template-columns: 1fr 2fr 1.3fr;
     column-gap: max(20px, 5%);
 }
 
