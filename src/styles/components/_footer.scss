@@ -41,6 +41,7 @@
         &-society{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            margin-left: 30px;
             &>img{
                 margin-left: auto;
                 margin-right: auto;
