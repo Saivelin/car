@@ -17,8 +17,8 @@ const Header = () => {
                 </div>
                 <div className="header__nav-item"><Link href={"/dilers"} className={pathname == "/dilers" ? "header__nav-active" : "header__nav-hover"}>Диллеры</Link></div>
                 <div className="header__nav-item"><Link href={"/services"} className={pathname == "/services" ? "header__nav-active" : "header__nav-hover"}>Услуги</Link></div>
-                <div className="header__nav-item header__nav-personal header__nav-hover">
-                    <Link href={"/users/1"} className={pathname.includes("/users") ? "header__nav-active" : ""}>
+                <div className="header__nav-item header__nav-personal ">
+                    <Link href={"/users/1"} className={pathname.includes("/users") ? "header__nav-active" : "header__nav-hover"}>
                         <img src="/personal.webp" alt="Личный кабинет" />
                     </Link>
                 </div>
