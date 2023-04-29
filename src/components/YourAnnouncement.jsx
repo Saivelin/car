@@ -33,10 +33,10 @@ const YourAnnouncement = () => {
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
-                    <SwiperSlide><CatalogTile tile={test[0]} /></SwiperSlide>
-                    <SwiperSlide><CatalogTile tile={test[0]} /></SwiperSlide>
-                    <SwiperSlide><CatalogTile tile={test[0]} /></SwiperSlide>
-                    <SwiperSlide><CatalogTile tile={test[0]} /></SwiperSlide>
+                    <SwiperSlide className='yourAnnouncement__slide'><CatalogTile tile={test[0]} /></SwiperSlide>
+                    <SwiperSlide className='yourAnnouncement__slide'><CatalogTile tile={test[0]} /></SwiperSlide>
+                    <SwiperSlide className='yourAnnouncement__slide'><CatalogTile tile={test[0]} /></SwiperSlide>
+                    <SwiperSlide className='yourAnnouncement__slide'><CatalogTile tile={test[0]} /></SwiperSlide>
                 </Swiper>
                 <img src="/nextarrow.webp" alt="" />
             </div>
