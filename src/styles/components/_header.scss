@@ -13,10 +13,12 @@
         &-item{
             font-size: clamp(12px, 1.3rem, 50px);
             font-weight: 500;
-            display: flex;
+            display: grid;
             text-align: center;
             justify-content: center;
+            align-items: center;
             flex-grow: 1;
+            
             &>*{
                 font-weight: 400;
             }
@@ -40,4 +42,19 @@
             }
         }
     }
+}
+
+.header__nav-hover:after {
+    display: block;
+    position: relative;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #4069C9;
+    content: "";
+    transition: width 0.3s ease-out;
+}
+.header__nav-hover:hover:after,
+.header__nav-hover:focus:after {
+    width: 100%;
 }
