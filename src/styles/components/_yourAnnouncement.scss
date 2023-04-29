@@ -9,6 +9,7 @@
     &__sliderOfMain{
         width: 100%;
         margin: 0;
+        border-radius: 8px;
         &>*{
             color: black;
         }
@@ -21,5 +22,18 @@
         margin-bottom: 10%;
     }
     &__slide{
+    }
+    &__footer{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 max(30px, 4%);
+        &-item{
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+            font-size: max(16px, 1.3rem);
+            font-weight: 400;
+        }
     }
 }

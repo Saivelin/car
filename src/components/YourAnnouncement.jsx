@@ -40,6 +40,16 @@ const YourAnnouncement = () => {
                 </Swiper>
                 <img src="/nextarrow.webp" alt="" />
             </div>
+            <div className="yourAnnouncement__footer">
+                <div className="yourAnnouncement__footer-item">
+                    <img src="/heart.webp" alt="" />
+                    <p>- 14</p>
+                </div>
+                <div className="yourAnnouncement__footer-item">
+                    <img src="/views.webp" alt="" />
+                    <p>- 1217</p>
+                </div>
+            </div>
         </div>
     );
 };
