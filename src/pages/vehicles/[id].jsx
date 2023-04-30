@@ -3,6 +3,19 @@ import { useState } from "react";
 const vehicles = () => {
     const [vehicle, setVehicle] = useState({
         title: "BMW M5 Competition, 2020",
+        imgs: [
+            "test1.png",
+            "test2.png",
+            "test3.png",
+            "test4.png",
+            "test2.png",
+            "test4.png",
+            "test2.png",
+            "test4.png",
+            "test2.png",
+            "test3.png",
+            "test1.png",
+        ],
         price: 12345575,
         generation: "Поколение: VI (F90) рестайлинг",
         body: "Седан",
@@ -38,7 +51,19 @@ const vehicles = () => {
     return (
         <div className='vehicleDetails'>
             <div className="vehicleDetails__main">
-                <img src="/test.png" alt="" />
+                <div className="vehicleDetails__main__gallery">
+                    <div className="vehicleDetails__main__gallery-activeWrapper">
+                        <img src={"/" + vehicle.imgs[0]} alt="" className="vehicleDetails__main__gallery-active" />
+                    </div>
+                    <div className="vehicleDetails__main__gallery-disactiveWrapper">
+                        {vehicle.imgs.map((el, i) => {
+                            if (i != 0) {
+                                return <img src={"/" + el} alt="" />
+                            }
+                        })}
+                    </div>
+                </div>
+                {/* <div className="vehicleDetails__main-detailsWrapper"> */}
                 <div className="vehicleDetails__main-details">
                     <div className="vehicleDetails__main-details-title">
                         <p className="">{vehicle.title}</p>
@@ -50,16 +75,27 @@ const vehicles = () => {
                     </div>
                     <div className="vehicleDetails__main-details-propertys">
                         {vehicle.details.map((el) => {
-                            return <p>{el}</p>
+                            return <p>{el.split(":")[0]}: <span className="vehicleDetails__main-details-prop">{el.split(":")[1]}</span></p>
                         })}
                     </div>
-                    <div className="vehicleDetails__main-details__footer">
-                        <p>{vehicle.price}</p>
-                        <img src="/heart.svg" alt="like" />
-                        <img src="/phone.svg" alt="phone" />
-                        <img src="/email.svg" alt="email" />
+                    <div className="vehicleDetails__main-details__footerWrapper">
+                        <div className="vehicleDetails__main-details__footer">
+                            <div className="vehicleDetails__main-details__footer-item">
+                                <p>{vehicle.price.toLocaleString()}₽</p>
+                            </div>
+                            <div className="vehicleDetails__main-details__footer-item">
+                                <img src="/heart.svg" alt="like" />
+                            </div>
+                            <div className="vehicleDetails__main-details__footer-item">
+                                <img src="/phone.svg" alt="phone" />
+                            </div>
+                            <div className="vehicleDetails__main-details__footer-item">
+                                <img src="/email.svg" alt="email" />
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {/* </div> */}
             </div>
         </div>
     );
