@@ -8,6 +8,7 @@
     margin: 30px clamp(30px, 12%, 400px);
     padding: 16px;
     border-radius: 16px;
+    gap: clamp(10px, 1%, 100px);
     &__main{
         display: grid;
         grid-template-columns: 1.8fr 1fr;
@@ -97,6 +98,68 @@
                     border-radius: 8px;
                 }
             }
+        }
+    }
+    &__package{
+        padding: 0 max(10px, 2.3%);
+        display: flex;
+        row-gap: 15px;
+        flex-direction: column;
+        &-title{
+            font-size: max(16px, 1.3rem);
+            &-colored{
+                color: $mainLight;
+                font-weight: 400;
+            }
+        }
+        &-mainWrapper{
+            display: grid;
+            grid-auto-flow: column;
+            align-items: center;
+            column-gap: 5px;
+        }
+        &-main{
+            width: 100%;
+        }
+    }
+    &__comment{
+        padding: 0 max(10px, 2.3%);
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        max-width: 70%;
+        margin-top: 20px;
+        &-title{
+            font-size: max(16px, 1.3rem);
+        }
+    }
+    &__adsComps{
+        padding: 0 max(10px, 2.3%);
+    }
+}
+
+
+.packageItem{
+    display: grid;
+    row-gap: 10px;
+    &__title{
+        font-size: max(14px, 1.1rem);
+        font-weight: 400;
+    }
+    &__list{
+        display: grid;
+        row-gap: 8px;
+        list-style: none;
+        &-item{
+            margin-left: 1em;
+        }
+        &-item::before{
+            content: "•";
+            color: $mainLight;
+            font-weight: 900;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
         }
     }
 }

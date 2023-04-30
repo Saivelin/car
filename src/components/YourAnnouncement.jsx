@@ -29,6 +29,7 @@ const YourAnnouncement = () => {
                 <img src="/prevarrow.webp" alt="" onClick={() => { slider.current.swiper.slidePrev() }} />
                 <Swiper
                     ref={slider}
+                    loop={true}
                     className='yourAnnouncement__sliderOfMain'
                     spaceBetween={10}
                     slidesPerView={1}
