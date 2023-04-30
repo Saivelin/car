@@ -2,5 +2,14 @@
 @import "../mixins.scss";
 
 .vehicleDetails{
-    
+    display: grid;
+    background-color: $mainBgColor;
+    box-shadow: 0 0 15px $darkDarkMainColor;
+    margin: 30px clamp(30px, 12%, 400px);
+    padding: 16px;
+    border-radius: 8px;
+    &__main{
+        display: grid;
+        grid-template-columns: 1.8fr 1fr;
+    }
 }
