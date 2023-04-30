@@ -173,6 +173,7 @@ const vehicles = () => {
                 </p>
             </div>
             <div className="vehicleDetails__adsComps">
+                <h3 className="vehicleDetails__adsComps-title">Спецпредложения от  CarTron</h3>
                 <Promo
                     propertyes={{
                         title: "Проврека по VIN",

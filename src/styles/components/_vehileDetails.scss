@@ -8,7 +8,7 @@
     margin: 30px clamp(30px, 12%, 400px);
     padding: 16px;
     border-radius: 16px;
-    gap: clamp(10px, 1%, 100px);
+    gap: clamp(10px, 1.5%, 100px);
     &__main{
         display: grid;
         grid-template-columns: 1.8fr 1fr;
@@ -22,6 +22,7 @@
                 height: 400px;
             }
             &-active{
+                border-radius: 8px;
                 position: absolute;
                 top:50%;
                 left:50%;
@@ -36,6 +37,7 @@
                 column-gap: 10px;
                 &>img{
                     height: 100px;
+                    border-radius: 4px;
                 }
             }
             &>*:not(.vehicleDetails__main__gallery-active){
@@ -48,7 +50,7 @@
             row-gap: 10px;
             &-propertys{
                 display: grid;
-                row-gap: 5px;
+                row-gap: 10px;
             }
             &-prop{
                 font-weight:500;
@@ -105,11 +107,12 @@
         display: flex;
         row-gap: 15px;
         flex-direction: column;
+        font-weight: 700;
         &-title{
-            font-size: max(16px, 1.3rem);
+            font-size: max(16px, 1.6rem);
             &-colored{
                 color: $mainLight;
-                font-weight: 400;
+                font-weight: 700;
             }
         }
         &-mainWrapper{
@@ -129,21 +132,28 @@
         row-gap: 15px;
         max-width: 70%;
         margin-top: 20px;
+        font-weight: 400;
         &-title{
-            font-size: max(16px, 1.3rem);
+            font-size: max(16px, 1.6rem);
+            font-weight: 700;
         }
     }
     &__adsComps{
         display: grid;
         padding: 0 max(10px, 2.3%);
-        row-gap:50px;
+        row-gap: 50px;
+        &-title{
+            font-weight: 400;
+            font-size: max(16px, 1.6rem);
+            text-align: center;
+        }
     }
     &__similarAds{
         display: grid;
         column-gap: 50px;
         row-gap: 10px;
         grid-template-columns: repeat(3, 1fr);
-        margin-bottom: 5%;
+        margin-bottom: 8%;
         &>h3{
             font-weight: 400;
             font-size: max(12px, 1.4rem);
@@ -157,9 +167,10 @@
 .packageItem{
     display: grid;
     row-gap: 10px;
+    color: #313644;
     &__title{
-        font-size: max(14px, 1.1rem);
-        font-weight: 400;
+        font-size: max(14px, 1.2rem);
+        font-weight: 500;
     }
     &__list{
         display: grid;
@@ -167,6 +178,7 @@
         list-style: none;
         &-item{
             margin-left: 1em;
+            font-weight: 400;
         }
         &-item::before{
             content: "•";
