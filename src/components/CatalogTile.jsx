@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 const CatalogTile = ({ tile, doubled }) => {
     console.log(tile)
     return (
         <div className={doubled === true ? "catalogTile catalogTile-doubled" : "catalogTile"}>
             <img src={tile.img} alt={tile.title} className='catalogTile__img' />
             <div className="catalogTile__about">
-                <h5 className='catalogTile__title'>{tile.title}</h5>
+                <h5 className='catalogTile__title'><Link href={"/vehicles/" + tile.id}>{tile.title}</Link></h5>
                 <div className=''>
                     {doubled === true ?
                         <div className='catalogTile__about-around'>
