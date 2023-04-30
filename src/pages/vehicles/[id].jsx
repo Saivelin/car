@@ -161,8 +161,8 @@ const vehicles = () => {
                 </div>
             </div>
             <div className="vehicleDetails__comment">
-                <p className='vehicleDetails__comment-title'>Комментарий продавца:</p>
-                <p>
+                <p className="vehicleDetails__comment-title">Комментарий продавца:</p>
+                <p className="vehicleDetails__comment-main">
                     Полный сток
                     На гарантии до мая 2023г.
                     ТО каждые 5 т.км., последнее 1000 км назад
