@@ -3,8 +3,23 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Promo from "@/components/Promo";
+import CatalogTile from "@/components/CatalogTile";
 
 const vehicles = () => {
+    const test = [{
+        id: 1,
+        img: "/test.png",
+        title: "BMW M5 Competition, 2020",
+        year: 2020,
+        complication: "Полный",
+        mileage: 15463,
+        type: "Седан",
+        consumption: "4.4л / 456 л.с.",
+        fuel: "Бензин",
+        price: 12995000,
+        generation: "Поколение: vi (F90) рестайлинг",
+        shiftBox: "Автомат",
+    }]
     const [vehicle, setVehicle] = useState({
         title: "BMW M5 Competition, 2020",
         imgs: [
@@ -158,7 +173,52 @@ const vehicles = () => {
                 </p>
             </div>
             <div className="vehicleDetails__adsComps">
-                <Promo />
+                <Promo
+                    propertyes={{
+                        title: "Проврека по VIN",
+                        imgTest: "Проверка собственника",
+                        img: "/vin.webp",
+                        btns: [
+                            "Купить полный отчёт от 99р",
+                            "Бесплатный отчёт"
+                        ],
+                        imgPosition: 1,
+                        props: [
+                            "Характеристики совпадают с ПТС",
+                            "Данные о розыске и запрете на регистрацию не найдены",
+                            "4 записи в истории пробегов",
+                            "7 записей в истории эксплуатации",
+                            "Поиск данных о залоге",
+                            "Данные о ДТП не найдены"
+                        ],
+                    }}
+                />
+                <Promo
+                    propertyes={{
+                        title: "Умный калькулятор",
+                        imgTest: "Умный калькулятор",
+                        img: "/calculator.webp",
+                        btns: [
+                            "Рассчитать для данного авто",
+                            "Рассчитать"
+                        ],
+                        imgPosition: 2,
+                        props: [
+                            "Абсолютно бесплатный сервис",
+                            "Расчёт средней цены содержания авто в месяц / год ",
+                            "Подскажет где лучше всего обслужить авто после покупки",
+                            "Найдет лучшие предложения по кредитованию / страхованию",
+                            "Если авто имеет недостатки, подскажет где их можно устранить",
+                            "Ищет ближайшие сервисы с лучшими отзывами",
+                        ],
+                    }}
+                />
+                <div className="vehicleDetails__similarAds">
+                    <h3>Похожие объявления: </h3>
+                    <CatalogTile tile={test[0]} />
+                    <CatalogTile tile={test[0]} />
+                    <CatalogTile tile={test[0]} />
+                </div>
             </div>
         </div>
     );

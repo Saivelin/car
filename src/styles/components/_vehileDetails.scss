@@ -134,7 +134,22 @@
         }
     }
     &__adsComps{
+        display: grid;
         padding: 0 max(10px, 2.3%);
+        row-gap:50px;
+    }
+    &__similarAds{
+        display: grid;
+        column-gap: 50px;
+        row-gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        margin-bottom: 5%;
+        &>h3{
+            font-weight: 400;
+            font-size: max(12px, 1.4rem);
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
     }
 }
 
