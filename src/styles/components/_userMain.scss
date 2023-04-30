@@ -1,4 +1,5 @@
 @import "../variables.scss";
+@import "../mixins.scss";
 
 .userMain{
     background: linear-gradient(0.25turn,#4A5368, #242730);
@@ -34,4 +35,18 @@
 
 .userAnnouncements{
     padding: clamp(10px, 2%, 200px) clamp(10px,12.5%,350px);
+}
+
+.userProfileFooter{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 30px;
+    &>*{
+        width: 80px;
+        height: 80px;
+        padding: max(12.5px, 10%);
+        cursor: pointer;
+        @include box-shadow_dark-white;
+        border-radius: 8px;
+    }
 }

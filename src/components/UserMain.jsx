@@ -7,6 +7,11 @@ const UserMain = () => {
                     <p className="">Лео Морфиус</p>
                 </div>
             </div>
+            <div className="userProfileFooter">
+                <img src="/email.svg" alt="" />
+                <img src="/heart.svg" alt="" />
+                <img src="/preferences.svg" alt="" />
+            </div>
         </div>
     );
 };

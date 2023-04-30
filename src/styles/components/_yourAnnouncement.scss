@@ -20,6 +20,9 @@
         align-items: center;
         column-gap: 5px;
         margin-bottom: 10%;
+        &>img{
+            cursor: pointer;
+        }
     }
     &__slide{
     }
