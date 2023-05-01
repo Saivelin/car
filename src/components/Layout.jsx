@@ -3,6 +3,7 @@ import Footer from './Footer';
 import Header from './Header/Header';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import Modal from './Modal';
 
 const Layout = ({ children }) => {
     return (
@@ -12,6 +13,7 @@ const Layout = ({ children }) => {
                 <link rel="icon" type="image/x-icon" href="/logo.ico" />
             </Head>
             <Header />
+            <Modal />
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>{children}</motion.div>
             <Footer />
         </div>

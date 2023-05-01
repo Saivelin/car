@@ -6,6 +6,7 @@ import Promo from "@/components/Promo";
 import CatalogTile from "@/components/CatalogTile";
 import { motion } from "framer-motion";
 import ImageGallery from 'react-image-gallery';
+import Modal from "@/components/Modal"
 
 const vehicles = () => {
     const test = [{
@@ -86,22 +87,24 @@ const vehicles = () => {
         var arr = vehicle.imgs
         arr[i] = arr.splice(0, 1, arr[i])[0]
         console.log(arr)
-        mainImage.current.style.cssText = "opacity: 0;animation: op1-op0 .5s;"
-        setTimeout(() => {
-            setVehicle({ ...vehicle, imgs: arr })
-            mainImage.current.style.cssText = "opacity: 1;animation: op0-op1 .5s;"
-        }, 560)
+        setVehicle({ ...vehicle, imgs: arr })
+        // mainImage.current.style.cssText = "opacity: 0;animation: op1-op0 .125s;"
+        // setTimeout(() => {
+        //     setVehicle({ ...vehicle, imgs: arr })
+        //     mainImage.current.style.cssText = "opacity: 1;animation: op0-op1 .125s;"
+        // }, 250)
     }
 
     const vehicleMouseLeave = (i) => {
         var arr = vehicle.imgs
         arr[i] = arr.splice(0, 1, arr[i])[0]
         console.log(arr)
-        mainImage.current.style.cssText = "opacity: 0;animation: op1-op0 .5s;"
-        setTimeout(() => {
-            setVehicle({ ...vehicle, imgs: arr })
-            mainImage.current.style.cssText = "opacity: 1;animation: op0-op1 .5s;"
-        }, 560)
+        setVehicle({ ...vehicle, imgs: arr })
+        // mainImage.current.style.cssText = "opacity: 0;animation: op1-op0 .125s;"
+        // setTimeout(() => {
+        //     setVehicle({ ...vehicle, imgs: arr })
+        //     mainImage.current.style.cssText = "opacity: 1;animation: op0-op1 .125s;"
+        // }, 250)
     }
 
     const openGallery = () => {

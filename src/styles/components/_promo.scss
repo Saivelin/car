@@ -3,7 +3,7 @@
 
 .promo{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1.4fr 2fr;
     column-gap: 30px;
     &__image{
         background-size: 100%;
@@ -74,10 +74,14 @@
         align-items: center;
         width: 100%;
         padding: clamp(0px, 10px, 10%);
+        font-weight: 500;
         @include box-shadow_dark-white;
     }
 }
 
 .promoRightImage{
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1.4fr;
+    &>.promo__about{
+        justify-content: start;
+    }
 }

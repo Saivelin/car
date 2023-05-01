@@ -18,6 +18,7 @@
     "react-dom": "18.2.0",
     "react-image-gallery": "^1.2.11",
     "react-select": "^5.7.2",
+    "recoil": "^0.7.7",
     "sass": "^1.58.3",
     "swiper": "^9.2.4"
   }

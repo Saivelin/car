@@ -125,7 +125,7 @@
         display: flex;
         row-gap: 15px;
         flex-direction: column;
-        font-weight: 700;
+        font-weight: 500;
         &-title{
             font-size: max(16px, 1.6rem);
             &-colored{
@@ -202,7 +202,7 @@
     &__title{
         font-size: max(14px, 1.3rem);
         font-weight: 500;
-        color: #313644;
+        color: #3f4658;
     }
     &__list{
         display: grid;
