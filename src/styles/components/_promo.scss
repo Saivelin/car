@@ -32,6 +32,7 @@
             text-align: center;
             font-size: max(24px, 1.6rem);
             font-weight: 400;
+            color: #313644;
         }
     }
     &__list{
@@ -39,6 +40,8 @@
         display: grid;
         row-gap: max(12px, 1rem);
         &-item{
+            color: #3E4657;
+            font-weight: 400;
             margin-left: 1em;
             font-size: max(16px, 1.4rem);
         }

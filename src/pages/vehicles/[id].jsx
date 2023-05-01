@@ -5,6 +5,7 @@ import 'swiper/css';
 import Promo from "@/components/Promo";
 import CatalogTile from "@/components/CatalogTile";
 import { motion } from "framer-motion";
+import ImageGallery from 'react-image-gallery';
 
 const vehicles = () => {
     const test = [{
@@ -35,6 +36,19 @@ const vehicles = () => {
             "test2.png",
             "test3.png",
             "test1.png",
+        ],
+        imgsFull: [
+            { original: "/test1.png", thumbnail: "/test1.png" },
+            { original: "/test2.png", thumbnail: "/test2.png" },
+            { original: "/test3.png", thumbnail: "/test3.png" },
+            { original: "/test4.png", thumbnail: "/test4.png" },
+            { original: "/test2.png", thumbnail: "/test2.png" },
+            { original: "/test4.png", thumbnail: "/test4.png" },
+            { original: "/test2.png", thumbnail: "/test2.png" },
+            { original: "/test4.png", thumbnail: "/test4.png" },
+            { original: "/test2.png", thumbnail: "/test2.png" },
+            { original: "/test3.png", thumbnail: "/test3.png" },
+            { original: "/test1.png", thumbnail: "/test1.png" },
         ],
         price: 12345575,
         generation: "Поколение: VI (F90) рестайлинг",
@@ -90,7 +104,20 @@ const vehicles = () => {
         }, 560)
     }
 
+    const openGallery = () => {
+        console.log("gallery:")
+        console.log(gallery.current)
+        gallery.current.classList.add("vehicleDetails__gallery-fullScreenWrapper-active")
+    }
+
+    const closeGallery = () => {
+        console.log("gallery:")
+        console.log(gallery.current)
+        gallery.current.classList.remove("vehicleDetails__gallery-fullScreenWrapper-active")
+    }
+
     const mainImage = useRef()
+    const gallery = useRef()
 
     useEffect(() => {
 
@@ -98,6 +125,16 @@ const vehicles = () => {
 
     return (
         <motion.div className='vehicleDetails'>
+            <div className="vehicleDetails__gallery-fullScreenWrapper" ref={gallery} onClick={closeGallery}>
+                <div className="vehicleDetails__gallery-fullScreenModal" onClick={(e) => { e.stopPropagation() }}>
+                    <ImageGallery
+                        lazyLoad={true}
+                        items={vehicle.imgsFull}
+                        showPlayButton={false}
+                        className="vehicleDetails__gallery-fullScreen"
+                    />
+                </div>
+            </div>
             <div className="vehicleDetails__main">
                 <div className="vehicleDetails__main__gallery">
                     <div className="vehicleDetails__main__gallery-activeWrapper">
@@ -111,6 +148,9 @@ const vehicles = () => {
                                     whileInView={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     className="vehicleDetails__main__gallery-disactiveWrapper-itemWrapper"><img key={el.id} src={"/" + el} alt=""
+                                        onClick={() => {
+                                            openGallery()
+                                        }}
                                         onMouseEnter={() => {
                                             vehicleHover(i)
                                             console.log(this)
@@ -204,13 +244,13 @@ const vehicles = () => {
             <div className="vehicleDetails__comment">
                 <p className="vehicleDetails__comment-title">Комментарий продавца:</p>
                 <p className="vehicleDetails__comment-main">
-                    Полный сток
-                    На гарантии до мая 2023г.
-                    ТО каждые 5 т.км., последнее 1000 км назад
-                    В идеальном техническом и внешнем состоянии, ни одной крашеной детали.
-                    Полный карбон m-performance
-                    Авто полностью в пленке Suntek
-                    Очень редкое сочетание цвета солона
+                    Полный сток<br />
+                    На гарантии до мая 2023г.<br />
+                    ТО каждые 5 т.км., последнее 1000 км назад<br />
+                    В идеальном техническом и внешнем состоянии, ни одной крашеной детали.<br />
+                    Полный карбон m-performance<br />
+                    Авто полностью в пленке Suntek<br />
+                    Очень редкое сочетание цвета солона<br />
                 </p>
             </div>
             <div className="vehicleDetails__adsComps">

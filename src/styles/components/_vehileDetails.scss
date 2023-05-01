@@ -44,17 +44,18 @@
                     overflow: hidden;
                     border-radius: 4px;
                     position: relative;
-                }
-                &>div>img{
-                    height: 100%;
-                    width: auto;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
+                    &>img{
+                        height: 100%;
+                        width: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        cursor: pointer;
+                    }
                 }
             }
             &>*:not(.vehicleDetails__main__gallery-active){
@@ -162,7 +163,10 @@
             font-weight: 700;
         }
         &-main{
-            font-size: max(14px, 1rem);
+            font-size: max(14px, 1.2rem);
+            color: #495166;
+            line-height: max(20px, 1.8rem);
+            font-weight: 400;
         }
     }
     &__adsComps{
@@ -196,8 +200,9 @@
     row-gap: 10px;
     color: #313644;
     &__title{
-        font-size: max(14px, 1.2rem);
+        font-size: max(14px, 1.3rem);
         font-weight: 500;
+        color: #313644;
     }
     &__list{
         display: grid;
@@ -206,6 +211,8 @@
         &-item{
             margin-left: 1em;
             font-weight: 400;
+            color: #495166;
+            font-size: max(14px, 1.2rem);
         }
         &-item::before{
             content: "•";
@@ -216,4 +223,22 @@
             margin-left: -1em;
         }
     }
+}
+.vehicleDetails__gallery-fullScreenWrapper{
+    display: none;
+    &-active{
+        display: grid;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.877);
+        width: 100%;
+        height: 100vh;
+        z-index: 8;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.vehicleDetails__gallery-fullScreen{
+    z-index: 9;
 }
