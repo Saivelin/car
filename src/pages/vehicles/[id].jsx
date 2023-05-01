@@ -1,9 +1,10 @@
 import PackageItem from "@/components/VehicleDetails/PackageItem";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Promo from "@/components/Promo";
 import CatalogTile from "@/components/CatalogTile";
+import { motion } from "framer-motion";
 
 const vehicles = () => {
     const test = [{
@@ -67,17 +68,57 @@ const vehicles = () => {
         ]
     });
 
+    const vehicleHover = (i) => {
+        var arr = vehicle.imgs
+        arr[i] = arr.splice(0, 1, arr[i])[0]
+        console.log(arr)
+        mainImage.current.style.cssText = "opacity: 0;animation: op1-op0 .5s;"
+        setTimeout(() => {
+            setVehicle({ ...vehicle, imgs: arr })
+            mainImage.current.style.cssText = "opacity: 1;animation: op0-op1 .5s;"
+        }, 560)
+    }
+
+    const vehicleMouseLeave = (i) => {
+        var arr = vehicle.imgs
+        arr[i] = arr.splice(0, 1, arr[i])[0]
+        console.log(arr)
+        mainImage.current.style.cssText = "opacity: 0;animation: op1-op0 .5s;"
+        setTimeout(() => {
+            setVehicle({ ...vehicle, imgs: arr })
+            mainImage.current.style.cssText = "opacity: 1;animation: op0-op1 .5s;"
+        }, 560)
+    }
+
+    const mainImage = useRef()
+
+    useEffect(() => {
+
+    }, [vehicle.imgs])
+
     return (
-        <div className='vehicleDetails'>
+        <motion.div className='vehicleDetails'>
             <div className="vehicleDetails__main">
                 <div className="vehicleDetails__main__gallery">
                     <div className="vehicleDetails__main__gallery-activeWrapper">
-                        <img src={"/" + vehicle.imgs[0]} alt="" className="vehicleDetails__main__gallery-active" />
+                        <img ref={mainImage} src={"/" + vehicle.imgs[0]} alt="" className="vehicleDetails__main__gallery-active" />
                     </div>
                     <div className="vehicleDetails__main__gallery-disactiveWrapper">
                         {vehicle.imgs.map((el, i) => {
                             if (i != 0) {
-                                return <img src={"/" + el} alt="" />
+                                return <motion.div
+                                    initial={{ opacity: 1 }}
+                                    whileInView={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="vehicleDetails__main__gallery-disactiveWrapper-itemWrapper"><img key={el.id} src={"/" + el} alt=""
+                                        onMouseEnter={() => {
+                                            vehicleHover(i)
+                                            console.log(this)
+                                        }}
+                                        onMouseLeave={() => {
+                                            vehicleMouseLeave(i)
+                                        }}
+                                    /></motion.div>
                             }
                         })}
                     </div>
@@ -221,7 +262,7 @@ const vehicles = () => {
                     <CatalogTile tile={test[0]} />
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
