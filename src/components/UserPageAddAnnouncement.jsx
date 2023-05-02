@@ -7,7 +7,7 @@ const UserPageAddAnnouncement = () => {
 
     return (
         <div className='userPageAddAnnouncement'>
-            <img src="/addAnnouncement.webp" alt="" className='' />
+            <img src="/addAnnouncement.webp" onClick={() => { setModal(<NewAdForm />) }} alt="" className='' />
             <div className="userPageAddAnnouncement__about">
                 <h5>Выставить на продажу - легко</h5>
                 <p>Создайте объявление, и его увидят тысячи покупателей</p>

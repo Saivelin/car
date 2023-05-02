@@ -177,7 +177,7 @@ const vehicles = () => {
                     </div>
                     <div className="vehicleDetails__main-details-propertys">
                         {vehicle.details.map((el) => {
-                            return <p>{el.split(":")[0]}: <span className="vehicleDetails__main-details-prop">{el.split(":")[1]}</span></p>
+                            return <div className="vehicleDetails__main-details-propertys-item"><p>{el.split(":")[0]}:</p><p className="vehicleDetails__main-details-prop">{el.split(":")[1]}</p></div>
                         })}
                     </div>
                     <div className="vehicleDetails__main-details__footerWrapper">
@@ -186,13 +186,13 @@ const vehicles = () => {
                                 <p>{vehicle.price.toLocaleString()}₽</p>
                             </div>
                             <div className="vehicleDetails__main-details__footer-item">
-                                <img src="/heart.svg" alt="like" />
+                                <img src="/heart__white.png" alt="like" />
                             </div>
                             <div className="vehicleDetails__main-details__footer-item">
-                                <img src="/phone.svg" alt="phone" />
+                                <img src="/phone_white.png" alt="phone" />
                             </div>
                             <div className="vehicleDetails__main-details__footer-item">
-                                <img src="/email.svg" alt="email" />
+                                <img src="/email__white.png" alt="email" />
                             </div>
                         </div>
                     </div>

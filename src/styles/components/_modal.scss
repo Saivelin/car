@@ -20,7 +20,7 @@
 .modal{
     min-height: 300px;
     min-width: 300px;
-    padding: clamp(10px, 8%, 300px);
+    padding: clamp(10px, 3%, 300px);
     z-index: 9;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.515);
     background-color: $mainBgColor;
