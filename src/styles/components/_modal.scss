@@ -20,10 +20,23 @@
 .modal{
     min-height: 300px;
     min-width: 300px;
+    max-height: 75%;
     padding: clamp(10px, 3%, 300px);
     z-index: 9;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.515);
     background-color: $mainBgColor;
     min-width: none;
     border-radius: 16px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 16px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: #e4e4e4;
+        border-radius: 0 100px 100px 0;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $darkMainColor;
+        border-radius: 100px;
+    }
 }
