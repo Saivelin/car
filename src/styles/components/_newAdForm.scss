@@ -101,6 +101,9 @@
             &>div{
                 display: flex;
                 column-gap: 5px;
+                &>label{
+                    font-weight: 500;
+                }
             }
         }
         &-inputsWrapper{
