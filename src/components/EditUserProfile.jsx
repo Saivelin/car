@@ -23,16 +23,17 @@ const EditUserProfile = () => {
                     <input type="text" placeholder="ФИО" className="editUserProfile__input" />
                     <div className="editUserProfile__radioWrapper">
                         <div className="editUserProfile__radioWrapper-itemWrapper">
-                            <input type="radio" name="dataDisplay" className="editUserProfile__input" />
-                            <label htmlFor="" className="editUserProfile__label">Отображать ФИО в профиле</label>
+                            <input id="fio" type="radio" name="dataDisplay" className="editUserProfile__input" />
+                            <label htmlFor="fio" className="editUserProfile__label">Отображать ФИО в профиле</label>
                         </div>
                         <div className="editUserProfile__radioWrapper-itemWrapper">
-                            <input type="radio" name="dataDisplay" className="editUserProfile__input" />
-                            <label htmlFor="" className="editUserProfile__label">Отображать только ник</label>
+                            <input id="nikOnly" type="radio" name="dataDisplay" className="editUserProfile__input" />
+                            <label htmlFor="nikOnly" className="editUserProfile__label">Отображать только ник</label>
                         </div>
                     </div>
                     <textarea placeholder="О себе" cols="10" rows="5" className="editUserProfile__input" />
                 </div>
+                <button className="editUserProfile__btn-secondary">Сохранить изменения</button>
             </div>
         </form>
     );
