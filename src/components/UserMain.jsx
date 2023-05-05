@@ -1,4 +1,9 @@
+import { modalState } from "../state/atoms.js"
+import { useRecoilState, useSetRecoilState } from "recoil"
+import EditUserProfile from "./EditUserProfile.jsx";
+
 const UserMain = () => {
+    const setModal = useSetRecoilState(modalState)
     return (
         <div className=''>
             <div className="userProfile">
@@ -10,7 +15,7 @@ const UserMain = () => {
             <div className="userProfileFooter">
                 <img src="/email.svg" alt="" />
                 <img src="/heart.svg" alt="" />
-                <img src="/preferences.svg" alt="" />
+                <img src="/preferences.svg" alt="" onClick={() => { setModal(<EditUserProfile />) }} />
             </div>
         </div>
     );
