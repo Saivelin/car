@@ -17,6 +17,8 @@
 @import "./components/modal";
 @import "./components/newAdForm";
 @import "./components/registrationForm";
+@import "./components/dilersMap";
+@import "./components/dilersList";
 
 *{
     margin: 0;
@@ -35,4 +37,26 @@
     height: 83vh;
     background-position: 50% 50%;
     background-size: cover;
+}
+
+.Page404{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    &__code{
+        font-weight: 600;
+        font-size: max(16px, 1.6rem);
+    }
+    &__text{
+        font-size: max(16px, 1.2rem);
+    }
+}
+
+.dilersPage{
+    display: grid;
+    margin: 30px clamp(30px, 12%, 400px);
+    padding: 16px;
+    gap: 40px;
 }

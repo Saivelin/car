@@ -1,0 +1,14 @@
+.dilersList{
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    &-item{
+        &>img{
+            width: 100%;
+        }
+        &-double{
+            flex-grow: 5;
+        }
+    }
+}
