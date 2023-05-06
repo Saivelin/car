@@ -156,7 +156,6 @@ const vehicles = () => {
                                         }}
                                         onMouseEnter={() => {
                                             vehicleHover(i)
-                                            console.log(this)
                                         }}
                                         onMouseLeave={() => {
                                             vehicleMouseLeave(i)

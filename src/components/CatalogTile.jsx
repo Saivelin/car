@@ -1,11 +1,33 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const CatalogTile = ({ tile, doubled }) => {
-    console.log(tile)
+    const [imagesOfVehicle, setImagesOfVehicle] = useState([...tile.imgs])
+
+    const vehicleHover = (i) => {
+        let arr = imagesOfVehicle
+        arr[i] = arr.splice(0, 1, arr[i])[0]
+        console.log(arr)
+        setImagesOfVehicle(() => [...arr])
+    }
+
+    const vehicleMouseLeave = (i) => {
+        let arr = imagesOfVehicle
+        arr[i] = arr.splice(0, 1, arr[i])[0]
+        console.log(arr)
+        setImagesOfVehicle(() => [...arr])
+    }
+
+    useEffect(() => {
+        console.log(imagesOfVehicle)
+    }, [imagesOfVehicle])
+
     return (
         <div className={doubled === true ? "catalogTile catalogTile-doubled" : "catalogTile"}>
-            <img src={tile.img} alt={tile.title} className='catalogTile__img' />
-            <div className="catalogTile__about">
+            <div className="catalogTile__mainImageWrapper">
+                <img src={imagesOfVehicle[0]} alt={tile.title} className={!doubled ? 'catalogTile__img' : "catalogTile__img-doubled"} />
+            </div>
+            <div className={!doubled ? "catalogTile__about" : "catalogTile__about catalogTile__about-doubled"}>
                 <h5 className='catalogTile__title'><Link href={"/vehicles/" + tile.id}>{tile.title}</Link></h5>
                 <div className=''>
                     {doubled === true ?
@@ -28,11 +50,32 @@ const CatalogTile = ({ tile, doubled }) => {
                         <p>{doubled === true ? "Расход: " + String(tile.consumption) : tile.consumption}</p>
                         <p>{doubled === true ? "Топливо: " + String(tile.fuel) : tile.fuel}</p>
                     </div>
+                    <div className='catalogTile__about-around'>
+                        <p>{doubled === true ? "Руль: " + String(tile.wheel) : tile.wheel}</p>
+                        <p>{doubled === true ? "Состояние: " + String(tile.condition) : tile.condition}</p>
+                    </div>
                 </div>
                 {!doubled ? <p className='catalogTile__price'>{(tile.price).toLocaleString()}₽</p> : ""}
             </div>
             {doubled === true ?
-                <p className='catalogTile__price'>{(tile.price).toLocaleString()}₽</p>
+                <div className="catalogTile__footer">
+                    <div className="catalogTile__imgs">
+                        {imagesOfVehicle.map((el, i) => {
+                            if (i != 0) {
+                                return <img
+                                    src={el} alt=""
+                                    onMouseEnter={() => {
+                                        vehicleHover(i)
+                                    }}
+                                    onMouseLeave={() => {
+                                        vehicleMouseLeave(i)
+                                    }}
+                                />
+                            }
+                        })}
+                    </div>
+                    <p className='catalogTile__price'>{(tile.price).toLocaleString()}₽</p>
+                </div>
                 :
                 ""
             }
