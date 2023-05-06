@@ -18,10 +18,6 @@ const CatalogTile = ({ tile, doubled }) => {
         setImagesOfVehicle(() => [...arr])
     }
 
-    useEffect(() => {
-        console.log(tile.imgs)
-    }, [imagesOfVehicle])
-
     return (
         <div className={doubled === true ? "catalogTile catalogTile-doubled" : "catalogTile"}>
             <div className="catalogTile__mainImageWrapper">
