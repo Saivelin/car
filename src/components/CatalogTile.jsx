@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const CatalogTile = ({ tile, doubled, imgs }) => {
-    const [imagesOfVehicle, setImagesOfVehicle] = useState(imgs)
+    const [imagesOfVehicle, setImagesOfVehicle] = useState([...imgs])
 
     const vehicleHover = (i) => {
         let arr = imagesOfVehicle
