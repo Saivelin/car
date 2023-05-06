@@ -18,7 +18,6 @@ const CatalogTiles = () => {
         wheel: "Левый",
         condition: "Не требует ремонта",
     }]
-    console.log(test)
 
     return (
         <div className="catalogTiles catalogTiles-three">
