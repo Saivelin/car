@@ -19,7 +19,7 @@ const CatalogTile = ({ tile, doubled }) => {
     }
 
     useEffect(() => {
-        console.log(imagesOfVehicle)
+        console.log(tile.imgs)
     }, [imagesOfVehicle])
 
     return (
