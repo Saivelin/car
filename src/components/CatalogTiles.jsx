@@ -4,7 +4,7 @@ const CatalogTiles = () => {
     const test = [{
         id: 1,
         img: "/test.png",
-        imgs: ["/test.png", "/test1.png", "/test2.png", "/test3.png"],
+        images: ["/test.png", "/test1.png", "/test2.png", "/test3.png"],
         title: "BMW M5 Competition, 2020",
         year: 2020,
         complication: "Полный",
