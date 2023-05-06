@@ -29,6 +29,11 @@
     &__input:not([type="radio"]){
         @include loginInput;
     }
+    &__input{
+        &-phone{
+            margin: 0 !important;
+        }
+    }
     &__btn{
         @include box-shadow_dark-white;
         border-radius: 30px;

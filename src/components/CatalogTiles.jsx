@@ -26,7 +26,7 @@ const CatalogTiles = () => {
             <CatalogTile tile={test[0]} />
             <CatalogTile tile={test[0]} />
             <CatalogTile tile={test[0]} />
-            <CatalogTile tile={test[0]} />
+            <CatalogTile tile={test[0]} doubled={true} />
             <CatalogTile tile={test[0]} />
         </div>
     );

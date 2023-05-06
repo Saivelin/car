@@ -1,4 +1,26 @@
+import { useState, useEffect } from "react";
+
 const EditUserProfile = () => {
+    const [phoneCount, setPhoneCount] = useState([
+        { id: 1 },
+    ]);
+
+    const addPhone = (e) => {
+        e.preventDefault()
+        console.log(phoneCount)
+        let newPhoneCount = phoneCount;
+        newPhoneCount = [...phoneCount, { id: phoneCount.length + 1 }]
+        setPhoneCount(newPhoneCount)
+    }
+
+    useEffect(() => {
+        if (phoneCount.length === 5) {
+            let newPhoneCount = phoneCount;
+            newPhoneCount.pop()
+            setPhoneCount(newPhoneCount)
+        }
+    }, [phoneCount])
+
     return (
         <form className="editUserProfile">
             <div>
@@ -14,8 +36,20 @@ const EditUserProfile = () => {
             <div className="editUserProfile__inputs">
                 <div className="editUserProfile__phones">
                     <label htmlFor="" className="editUserProfile__label">Мои телефоны</label>
-                    <input type="text" placeholder="Номер телефона" className="editUserProfile__input" />
-                    <button className="editUserProfile__btn">+ номер</button>
+                    {phoneCount.map((el, i) => {
+                        return <input
+                            key={el.id}
+                            type="text"
+                            placeholder="Номер телефона"
+                            className="editUserProfile__input editUserProfile__input-phone"
+                        />
+                    })}
+                    <button
+                        className="editUserProfile__btn"
+                        onClick={addPhone}
+                    >
+                        + номер
+                    </button>
                 </div>
                 <div className="editUserProfile__personalData">
                     <label htmlFor="" className="editUserProfile__label">Личные данные</label>
