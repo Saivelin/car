@@ -21,15 +21,15 @@ const CatalogTiles = () => {
 
     return (
         <div className="catalogTiles catalogTiles-three">
-            <CatalogTile tile={test[0]} doubled={true} />
-            <CatalogTile tile={test[0]} />
-            <CatalogTile tile={test[0]} />
-            <CatalogTile tile={test[0]} />
-            <CatalogTile tile={test[0]} />
-            <CatalogTile tile={test[0]} />
-            <CatalogTile tile={test[0]} />
-            <CatalogTile tile={test[0]} doubled={true} />
-            <CatalogTile tile={test[0]} />
+            <CatalogTile tile={test[0]} doubled={true} imgs={["/test.png", "/test1.png", "/test2.png", "/test3.png",]} />
+            <CatalogTile tile={test[0]} imgs={["/test.png", "/test1.png", "/test2.png", "/test3.png",]} />
+            <CatalogTile tile={test[0]} imgs={["/test.png", "/test1.png", "/test2.png", "/test3.png",]} />
+            <CatalogTile tile={test[0]} imgs={["/test.png", "/test1.png", "/test2.png", "/test3.png",]} />
+            <CatalogTile tile={test[0]} imgs={["/test.png", "/test1.png", "/test2.png", "/test3.png",]} />
+            <CatalogTile tile={test[0]} imgs={["/test.png", "/test1.png", "/test2.png", "/test3.png",]} />
+            <CatalogTile tile={test[0]} imgs={["/test.png", "/test1.png", "/test2.png", "/test3.png",]} />
+            <CatalogTile tile={test[0]} doubled={true} imgs={["/test.png", "/test1.png", "/test2.png", "/test3.png",]} />
+            <CatalogTile tile={test[0]} imgs={["/test.png", "/test1.png", "/test2.png", "/test3.png",]} />
         </div>
     );
 };
