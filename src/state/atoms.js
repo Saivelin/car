@@ -1,12 +1,13 @@
 import {
-    RecoilRoot,
     atom,
-    selector,
-    useRecoilState,
-    useRecoilValue,
 } from 'recoil';
 
 export const modalState = atom({
     key: "modalShowed",
     default: null
+})
+
+export const themeState = atom({
+    key: "themeState",
+    default: "white"
 })

@@ -1,13 +1,34 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
+import { useRecoilState } from "recoil"
+import { themeState } from "../../state/atoms"
 
 const Header = () => {
     const { pathname } = useRouter();
+    const [theme, setTheme] = useRecoilState(themeState);
+
+    const toggleTheme = () => {
+        if (theme === "white") {
+            setTheme("dark")
+        }
+        else if (theme === "dark") {
+            setTheme("white")
+        }
+        else {
+            setTheme("white")
+            console.log("theme error")
+        }
+    }
 
     return (
         <header className="header">
             <nav className="header__nav">
-                <div className="header__nav-item header__nav-lang">RU</div>
+                <motion.div
+                    className="header__nav-item header__nav-theme"
+                >
+                    <img src={theme === "white" ? "/sun.svg" : "/moon.svg"} alt="" onClick={toggleTheme} />
+                </motion.div>
                 <div className="header__nav-item"><Link href={"/"} className={pathname == "/" ? "header__nav-active" : "header__nav-hover"}>Объявления</Link></div>
                 <div className="header__nav-item"><Link href={"/details"} className={pathname == "/details" ? "header__nav-active" : "header__nav-hover"}>Запчасти</Link></div>
                 <div className="header__nav-item header__nav-logo">
