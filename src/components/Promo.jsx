@@ -17,7 +17,9 @@ const Promo = ({ propertyes }) => {
                 </ul>
                 <div className="promo__btnsWrapper">
                     {propertyes.btns.map((el) => {
-                        return <button className="promo__btn">{el}</button>
+                        if (el) {
+                            return <button className="promo__btn">{el}</button>
+                        }
                     })}
                 </div>
             </div>
