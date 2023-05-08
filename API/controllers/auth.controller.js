@@ -57,9 +57,15 @@ class authController {
         }
     }
 
-    async getUsers(req, res) {
+    async getProfileInfo(req, res) {
         try {
-            res.json("server worked");
+            const token = req.headers.authorization.split(" ")[1]
+            const userByToken = jwt.verify(token, secret)
+            const user = await db.query(`SELECT * FROM users WHERE id=$1`, [userByToken.id])
+            if (!user.rows[0]) {
+                return res.status(404).json({ status: false, message: "Пользователь не найден" })
+            }
+            return res.status(200).json({ status: true, message: "Пользователь найден", user: user.rows[0].nsp })
         } catch (e) {
             res.status(400).json({ status: false, errorName: e })
         }
