@@ -1,80 +1,48 @@
-const db = require('../db')
+const { User } = require('../models/models')
+const ApiError = require('../error/ApiError')
+
+const bcrypt = require("bcryptjs")
+const jwt = require('jsonwebtoken')
+const { secret } = require('../config/auth.config.js')
+
+const generateAccessToken = (id, role, nsp) => {
+    const payload = {
+        id,
+        role,
+        lfp
+    }
+    return jwt.sign(payload, secret, { expiresIn: "24h" })
+}
 
 class UserController {
-    async createUser(req, res) {
+    async registration(req, res, next) {
         try {
-            const { nsp, password } = req.body
-            const newPerson = await db.query(`INSERT INTO users (nsp, password) values ($1, $2) RETURNING *`, [nsp, password])
-            if (newPerson.rows[0]) {
-                res.json(newPerson.rows[0])
+            const { lfp, password } = req.body
+            if (!lfp || !password) {
+                return next(ApiError.badRequest("Некорректный email или пароль"))
             }
-            else {
-                res.json({ status: false })
+            const candidate = await User.findOne({ where: { lfp } })
+            if (candidate) {
+                return next(ApiError.badRequest("Такой пользователь уже существует"))
             }
+            const hashPassword = bcrypt.hashSync(password, 8)
+            const newPerson = await User.create({ lfp, password: hashPassword })
+            return res.status(200).json({ status: true, user: newPerson })
         } catch (e) {
-            res.json({ status: false, errorName: e })
-        }
-
-    }
-
-    async getUsers(req, res) {
-        try {
-            const persons = await db.query(`SELECT * FROM users`)
-            if (persons.rows[0]) {
-                res.json(persons.rows)
-            }
-            else {
-                res.json({ status: false })
-            }
-        } catch (e) {
-            res.json({ status: false, errorName: e })
+            res.status(400).json({ status: false, errorName: e })
         }
     }
 
-    async getOneUser(req, res) {
-        try {
-            const id = req.params.id
-            const user = await db.query(`SELECT * FROM users WHERE id=$1`, [id])
-            if (user.rows[0]) {
-                res.json(user.rows[0])
-            }
-            else {
-                res.json({ status: false })
-            }
-        } catch (e) {
-            res.json({ status: false, errorName: e })
-        }
+    async login(req, res) {
+
     }
 
-    async updateUser(req, res) {
-        try {
-            const { id, nsp, password } = req.body
-            const user = await db.query(`UPDATE users SET nsp = $1, password = $2 WHERE id = $3 RETURNING *`, [nsp, password, id])
-            if (user.rows[0]) {
-                res.json(user.rows[0])
-            }
-            else {
-                res.json({ status: false })
-            }
-        } catch (e) {
-            res.json({ status: false, errorName: e })
+    async check(req, res, next) {
+        const { id } = req.query
+        if (!id) {
+            return next(ApiError.badRequest('Не задан ID'))
         }
-    }
-
-    async deleteUser(req, res) {
-        try {
-            const id = req.params.id
-            const user = await db.query(`DELETE FROM users WHERE id=$1`, [id])
-            console.log(user)
-            if (user.rowCount > 0) {
-                res.json({ status: true })
-            }
-            else {
-                res.json({ status: false })
-            }
-        } catch (e) {
-            res.json({ status: false, errorName: e })
-        }
+        res.json(id)
     }
 }
 
