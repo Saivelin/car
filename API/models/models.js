@@ -5,7 +5,8 @@ const User = sequelize.define('user', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     lfp: { type: DataTypes.STRING },
     password: { type: DataTypes.STRING },
-    role: { type: DataTypes.STRING, defaultValue: "user" }
+    phone: { type: DataTypes.STRING },
+    role: { type: DataTypes.STRING, defaultValue: "user" },
 })
 
 module.exports = {

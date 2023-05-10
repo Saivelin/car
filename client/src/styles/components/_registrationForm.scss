@@ -71,3 +71,21 @@
         }
     }
 }
+
+
+.login-login{
+    width: 100%;
+    min-height: 35vh;
+    justify-items: center;
+    &>.login__registeredForm{
+        min-width: 25%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 3% 0;
+        row-gap: 10px;
+        &>.login__registeredForm__registeredButton{
+            margin: 0;
+        }
+    }
+}

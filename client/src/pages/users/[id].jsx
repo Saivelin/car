@@ -3,14 +3,23 @@ import UserPageAddAnnouncement from "@/components/UserPageAddAnnouncement";
 import YourAnnouncement from "@/components/YourAnnouncement";
 import { useRouter } from "next/router";
 import CatalogTiles from "@/components/CatalogTiles";
+import { getInfo } from "@/http/userAPI";
 
-const Users = () => {
-    const router = useRouter();
-    const { id } = router.query
+export const getServerSideProps = async (context) => {
+    const { id } = context.params
+    const response = await getInfo(id)
+
+    return {
+        props: { userInf: response }
+    }
+}
+
+const Users = ({ userInf }) => {
+    console.log(userInf)
     return (
         <div>
             <div className="userMain">
-                <UserMain />
+                <UserMain userInf={userInf.user} />
                 <UserPageAddAnnouncement />
                 <YourAnnouncement />
             </div>

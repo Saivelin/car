@@ -18,16 +18,16 @@ class UserController {
     async registration(req, res, next) {
         console.log("reg")
         try {
-            const { lfp, password } = req.body
-            if (!lfp || !password) {
-                return next(ApiError.badRequest("Некорректный email или пароль"))
+            const { lfp, password, phone } = req.body
+            if (!lfp || !password || !phone) {
+                return next(ApiError.badRequest("Некорректный email, пароль или телефон"))
             }
-            const candidate = await User.findOne({ where: { lfp } })
+            const candidate = await User.findOne({ where: { phone } })
             if (candidate) {
                 return next(ApiError.badRequest("Такой пользователь уже существует"))
             }
             const hashPassword = bcrypt.hashSync(password, 8)
-            const newPerson = await User.create({ lfp, password: hashPassword })
+            const newPerson = await User.create({ lfp, password: hashPassword, phone: phone })
             const token = generateAccessToken(newPerson.id, newPerson.role, newPerson.lfp)
             return res.status(200).json({ status: true, token: token })
         } catch (e) {
@@ -36,8 +36,8 @@ class UserController {
     }
 
     async login(req, res, next) {
-        const { lfp, password } = req.body
-        const user = await User.findOne({ where: { lfp } })
+        const { password, phone } = req.body
+        const user = await User.findOne({ where: { phone } })
         if (!user) {
             return next(ApiError.internal("Пользователь не найден"))
         }
@@ -56,6 +56,13 @@ class UserController {
 
     async checkAnyRole(req, res, next) {
         return res.json({ status: true })
+    }
+
+    async getUserById(req, res) {
+        const { id } = req.params
+
+        const user = await User.findOne({ where: { id } })
+        return res.json({ user: { id: user.id, lfp: user.lfp, phone: user.phone } })
     }
 
     async deleteUserById(req, res) {

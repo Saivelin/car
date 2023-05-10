@@ -9,5 +9,6 @@ router.post('/login', userController.login)
 router.get('/auth', authMiddleware, userController.check)
 router.get('/role-check-user', roleMiddleware(['user']), userController.checkAnyRole)
 router.get('/delete/:id', roleMiddleware(['admin']), userController.deleteUserById)
+router.get('/getById/:id', userController.getUserById)
 
 module.exports = router
