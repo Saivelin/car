@@ -1,0 +1,9 @@
+.input{
+    &-primary{
+        @include loginInput;
+        margin: 0;
+    }
+    &-filter{
+        padding: 15px 20px;
+    }
+}
