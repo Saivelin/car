@@ -88,8 +88,7 @@
 
 
 .catalogTile-doubled{
-    grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column: span 2;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr .6fr;

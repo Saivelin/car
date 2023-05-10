@@ -10,6 +10,7 @@ const DilersList = () => {
         { img: "test.png", type: "single" },
         { img: "test.png", type: "single" },
         { img: "test.png", type: "single" },
+        { img: "test2.png", type: "double" },
         { img: "test.png", type: "single" },
         { img: "test.png", type: "single" },
         { img: "test.png", type: "single" },

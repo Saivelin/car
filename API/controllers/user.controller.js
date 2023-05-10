@@ -60,9 +60,11 @@ class UserController {
 
     async getUserById(req, res) {
         const { id } = req.params
-
-        const user = await User.findOne({ where: { id } })
-        return res.json({ user: { id: user.id, lfp: user.lfp, phone: user.phone } })
+        if (id && Number(id)) {
+            const user = await User.findOne({ where: { id } })
+            return res.json({ user: { id: user.id, lfp: user.lfp, phone: user.phone } })
+        }
+        return res.json({ message: "Not valuable id" })
     }
 
     async deleteUserById(req, res) {
