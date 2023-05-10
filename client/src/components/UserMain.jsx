@@ -1,5 +1,5 @@
 import { modalState } from "../state/atoms.js"
-import { useRecoilState, useSetRecoilState } from "recoil"
+import { useSetRecoilState } from "recoil"
 import EditUserProfile from "./EditUserProfile.jsx";
 
 const UserMain = ({ userInf }) => {
