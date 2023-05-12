@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { update } from "@/http/userAPI";
+import axios from "axios";
+import { useState, useEffect, useRef } from "react";
 
 const EditUserProfile = () => {
     const [phoneCount, setPhoneCount] = useState([
@@ -21,16 +23,34 @@ const EditUserProfile = () => {
         }
     }, [phoneCount])
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const formDat = new FormData(e.target)
+        formDat.append("image", imageUpload.current.value)
+        axios({
+            method: "post",
+            url: "http://localhost:3005/upload",
+            data: formDat,
+            headers: { "Content-Type": "multipart/form-data" }
+        })
+    }
+
+    const imageUpload = useRef()
+    const form = useRef()
+
     return (
-        <form className="editUserProfile">
+        <form className="editUserProfile" ref={form} onSubmit={handleSubmit}>
             <div>
                 <div>
-                    <div className="editUserProfile__newAdForm__addImageForNewAdWrapper newAdForm__addImageForNewAdWrapper">
-                        <div className="editUserProfile__newAdForm__addImageForNewAdWrapper newAdForm__addImageForNewAdWrapper-content">
-                            <img src="/addPhoto.svg" alt="" />
-                            <p>Фото профиля</p>
+                    <label htmlFor="addImage">
+                        <input ref={imageUpload} type="file" size={"md"} id="addImage" className="newAdForm__addImageForNewAd" />
+                        <div className="editUserProfile__newAdForm__addImageForNewAdWrapper newAdForm__addImageForNewAdWrapper">
+                            <div className="editUserProfile__newAdForm__addImageForNewAdWrapper newAdForm__addImageForNewAdWrapper-content">
+                                <img src="/addPhoto.svg" alt="" />
+                                <p>Фото профиля</p>
+                            </div>
                         </div>
-                    </div>
+                    </label>
                 </div>
             </div>
             <div className="editUserProfile__inputs">
@@ -67,7 +87,7 @@ const EditUserProfile = () => {
                     </div>
                     <textarea placeholder="О себе" cols="10" rows="5" className="editUserProfile__input" />
                 </div>
-                <button className="editUserProfile__btn-secondary">Сохранить изменения</button>
+                <button className="editUserProfile__btn-secondary" type="submit">Сохранить изменения</button>
             </div>
         </form>
     );

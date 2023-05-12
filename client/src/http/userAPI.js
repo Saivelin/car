@@ -16,6 +16,11 @@ export const check = async () => {
     return response
 }
 
+export const update = async (formDat) => {
+    const response = await $host.post('/upload', formDat)
+    return response
+}
+
 export const getInfo = async (id) => {
     const { data } = await $host.get(`api/user/getById/${id}`)
     return data
