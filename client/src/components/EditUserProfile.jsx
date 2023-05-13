@@ -1,11 +1,13 @@
 import { update } from "@/http/userAPI";
+import { apiUrl } from "@/vars";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 
-const EditUserProfile = () => {
+const EditUserProfile = ({ userInf }) => {
     const [phoneCount, setPhoneCount] = useState([
         { id: 1 },
     ]);
+    const [usingName, setUsingName] = useState("lfp");
 
     const addPhone = (e) => {
         e.preventDefault()
@@ -23,20 +25,34 @@ const EditUserProfile = () => {
         }
     }, [phoneCount])
 
+    useEffect(() => {
+        if (userInf.lfpOrNick) {
+            setUsingName(userInf.lfpOrNick)
+        }
+    })
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const formDat = new FormData(e.target)
-        formDat.append("image", imageUpload.current.value)
+        formDat.append("img", imageUpload.current.files[0])
+        formDat.append("lfpOrNick", usingName)
+        formDat.delete("dataDisplay")
+        formDat.append("id", 1)
+        for (var pair of formDat.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
         axios({
             method: "post",
-            url: "http://localhost:3005/upload",
+            url: "http://localhost:3005/api/user/update",
             data: formDat,
-            headers: { "Content-Type": "multipart/form-data" }
-        })
+            headers: { "Content-Type": "multipart/form-data", "Authorization": `Bearer ${localStorage.getItem('token')}` }
+        }).then(() => { })
     }
 
     const imageUpload = useRef()
     const form = useRef()
+    const useLfp = useRef()
+    const useNick = useRef()
 
     return (
         <form className="editUserProfile" ref={form} onSubmit={handleSubmit}>
@@ -46,7 +62,7 @@ const EditUserProfile = () => {
                         <input ref={imageUpload} type="file" size={"md"} id="addImage" className="newAdForm__addImageForNewAd" />
                         <div className="editUserProfile__newAdForm__addImageForNewAdWrapper newAdForm__addImageForNewAdWrapper">
                             <div className="editUserProfile__newAdForm__addImageForNewAdWrapper newAdForm__addImageForNewAdWrapper-content">
-                                <img src="/addPhoto.svg" alt="" />
+                                <img src={userInf?.logo != "defaultUserLogo.png" ? apiUrl + userInf.logo : "/addPhoto.svg"} alt="" />
                                 <p>Фото профиля</p>
                             </div>
                         </div>
@@ -60,7 +76,9 @@ const EditUserProfile = () => {
                         return <input
                             key={el.id}
                             type="text"
+                            name={`phone${i + 1}`}
                             placeholder="Номер телефона"
+                            defaultValue={userInf?.phone}
                             className="editUserProfile__input editUserProfile__input-phone"
                         />
                     })}
@@ -73,19 +91,19 @@ const EditUserProfile = () => {
                 </div>
                 <div className="editUserProfile__personalData">
                     <label htmlFor="" className="editUserProfile__label">Личные данные</label>
-                    <input type="text" placeholder="Ник" className="editUserProfile__input" />
-                    <input type="text" placeholder="ФИО" className="editUserProfile__input" />
+                    <input type="text" name="nick" placeholder="Ник" defaultValue={userInf?.nick} className="editUserProfile__input" />
+                    <input type="text" name="lfp" placeholder="ФИО" className="editUserProfile__input" defaultValue={userInf?.lfp} />
                     <div className="editUserProfile__radioWrapper">
                         <div className="editUserProfile__radioWrapper-itemWrapper">
-                            <input id="fio" type="radio" name="dataDisplay" className="editUserProfile__input" />
-                            <label htmlFor="fio" className="editUserProfile__label">Отображать ФИО в профиле</label>
+                            <input checked={usingName == "lfp" ? "checked" : ""} id="lfp" type="radio" name="dataDisplay" className="editUserProfile__input" ref={useLfp} onChange={(e) => { setUsingName(e.target.id) }} />
+                            <label htmlFor="lfp" className="editUserProfile__label">Отображать ФИО в профиле</label>
                         </div>
                         <div className="editUserProfile__radioWrapper-itemWrapper">
-                            <input id="nikOnly" type="radio" name="dataDisplay" className="editUserProfile__input" />
-                            <label htmlFor="nikOnly" className="editUserProfile__label">Отображать только ник</label>
+                            <input checked={usingName == "nick" ? "checked" : ""} id="nick" type="radio" name="dataDisplay" className="editUserProfile__input" ref={useNick} onChange={(e) => { setUsingName(e.target.id) }} />
+                            <label htmlFor="nick" className="editUserProfile__label">Отображать только ник</label>
                         </div>
                     </div>
-                    <textarea placeholder="О себе" cols="10" rows="5" className="editUserProfile__input" />
+                    <textarea placeholder="О себе" name="about" cols="10" rows="5" defaultValue={userInf?.about} className="editUserProfile__input" />
                 </div>
                 <button className="editUserProfile__btn-secondary" type="submit">Сохранить изменения</button>
             </div>

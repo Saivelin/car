@@ -1,22 +1,26 @@
 import { modalState } from "../state/atoms.js"
 import { useSetRecoilState } from "recoil"
 import EditUserProfile from "./EditUserProfile.jsx";
+import { apiUrl } from "../vars/index.js"
 
-const UserMain = ({ userInf }) => {
+const UserMain = ({ userInf, auth }) => {
     const setModal = useSetRecoilState(modalState)
     return (
         <div className=''>
             <div className="userProfile">
-                <img src="/user.png" alt="" className="userProfile__logo" />
+                <img src={userInf.logo ? `${apiUrl}/${userInf.logo}` : "/user.png"} alt="" className="userProfile__logo" />
                 <div className="userProfile__name">
-                    <p className="">{userInf.lfp}</p>
+                    <p className="">{userInf.lfpOrNick == "lfp" ? userInf.lfp : userInf.nick}</p>
                 </div>
             </div>
-            <div className="userProfileFooter">
-                <img src="/email.svg" alt="" />
-                <img src="/heart.svg" alt="" />
-                <img src="/preferences.svg" alt="" onClick={() => { setModal(<EditUserProfile />) }} />
-            </div>
+            {auth === true ?
+                <div className="userProfileFooter">
+                    <img src="/email.svg" alt="" />
+                    <img src="/heart.svg" alt="" />
+                    <img src="/preferences.svg" alt="" onClick={() => { setModal(<EditUserProfile userInf={userInf} />) }} />
+                </div>
+                : ""
+            }
         </div>
     );
 };

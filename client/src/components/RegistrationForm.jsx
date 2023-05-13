@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { registration } from "../http/userAPI";
 
 import { useRecoilState } from "recoil"

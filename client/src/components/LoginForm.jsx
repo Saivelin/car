@@ -20,6 +20,7 @@ const LoginForm = () => {
 
     const onSubmit = async (e) => {
         const userData = await login(phone, password)
+        console.log(userData)
         setUserAuth(userData)
         push(`/users/${userData.id}`)
     }
@@ -30,10 +31,10 @@ const LoginForm = () => {
 
     useEffect(() => {
         console.log(userAuth)
-        if (userAuth != false) {
+        if (userAuth != false || localStorage.getItem("token")) {
             push(`/users/${userAuth.id}`)
         }
-    })
+    }, [])
 
     return (
         <motion.div className='login login-login' initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}>

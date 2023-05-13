@@ -5,6 +5,7 @@ const mainRouter = require('./routes/index')
 const models = require('./models/models.js')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 const fileUpload = require('express-fileupload');
+const path = require("path")
 
 const dotenv = require("dotenv");
 dotenv.config()
@@ -15,9 +16,10 @@ const app = express()
 app.use(cors({}));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
-app.use('/api', mainRouter)
-app.use(express.static('uploads'));
+app.use(express.static(path.resolve('uploads')));
 app.use(fileUpload());
+app.use('/api', mainRouter)
+
 
 //Обработчик ошибок
 app.use(errorHandler)
@@ -31,9 +33,14 @@ const start = async () => {
         })
         app.post('/upload', (req, res) => {
             const { image } = req.files;
+            if (image.mimetype.split("/")[0] != "image") {
+                return res.json({ status: false })
+            }
             if (!image) return res.sendStatus(400);
             console.log(req.files)
-            image.mv(__dirname + '/uploads/' + image.name);
+            let name = Date.now()
+            console.log(name)
+            image.mv(__dirname + '/uploads/' + name + image.name);
             res.sendStatus(200);
         });
     }

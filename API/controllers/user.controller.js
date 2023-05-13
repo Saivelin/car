@@ -4,7 +4,8 @@ const ApiError = require('../error/ApiError')
 const bcrypt = require("bcryptjs")
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/auth.config.js')
-const fileUpload = require('express-fileupload');
+
+const uuid = require('uuid')
 
 const generateAccessToken = (id, role, lfp) => {
     const payload = {
@@ -57,25 +58,29 @@ class UserController {
 
     async update(req, res, next) {
         try {
-            const { phone, nick, lfp, lfpOrNick, about } = req.body
-            const { image } = req.files;
-            if (!image) {
-
-            };
-            console.log(req.files)
-            image.mv(__dirname + '/uploads/' + "userLogo-" + image.name);
-            res.sendStatus(200);
-            // console.log(req)
-            // const { phone, nick, lfp, lfpOrNick, about } = req.body
-            // const { newLogo } = req.files
-
-            // if (!newLogo) return res.sendStatus(400);
-            // newLogo.mv('/uploads/' + "userLogo-" + newLogo.name);
-
-            // return res.status(200).json({ status: true })
+            const { phone, nick, lfp, lfpOrNick, about, id } = req.body
+            const { img } = req.files
+            console.log(req.body)
+            console.log("updatedUser")
+            let fileName = uuid.v4() + ".png"
+            if (img) {
+                if (img.mimetype.split("/")[0] != "image") {
+                    return res.json({ status: false })
+                }
+                img.mv('./uploads/' + fileName);
+            }
+            let updatedUser;
+            if (img) {
+                updatedUser = await User.update({ lfp: lfp, phone: phone, logo: fileName, nick: nick, lfpOrNick: lfpOrNick, about: about }, { where: { id } })
+            }
+            else {
+                updatedUser = await User.update({ lfp: lfp, phone: phone, nick: nick, lfpOrNick: lfpOrNick, about: about }, { where: { id } })
+            }
+            return res.status(200).json({ status: true, user: updatedUser })
         }
         catch {
             console.log("err")
+            return res.status(400).json("ERROR")
         }
     }
 
@@ -93,7 +98,7 @@ class UserController {
             const { id } = req.params
             if (id && Number(id)) {
                 const user = await User.findOne({ where: { id } })
-                return res.json({ user: { id: user.id, lfp: user.lfp, phone: user.phone } })
+                return res.json({ user: { id: user.id, lfp: user.lfp, phone: user.phone, nick: user.nick, logo: user.logo, lfpOrNick: user.lfpOrNick, about: user.about } })
             }
             return res.json({ message: "Not valuable id" })
         }

@@ -10,6 +10,6 @@ router.get('/auth', authMiddleware, userController.check)
 router.get('/role-check-user', roleMiddleware(['user']), userController.checkAnyRole)
 router.get('/delete/:id', roleMiddleware(['admin']), userController.deleteUserById)
 router.get('/getById/:id', userController.getUserById)
-router.post('/update', userController.update)
+router.post('/update', roleMiddleware(['user']), userController.update)
 
 module.exports = router

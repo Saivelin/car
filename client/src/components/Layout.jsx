@@ -4,8 +4,19 @@ import Header from './Header/Header';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import Modal from './Modal';
+import { useEffect } from 'react';
+import jwtDecode from 'jwt-decode';
+import { useRecoilState } from "recoil"
+import { user } from "../state/atoms"
 
 const Layout = ({ children }) => {
+    const [userAuth, setUserAuth] = useRecoilState(user)
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            setUserAuth(jwtDecode(localStorage.getItem("token")))
+        }
+    }, [])
+
     return (
         <div className='page'>
             <Head>

@@ -7,7 +7,10 @@ const User = sequelize.define('user', {
     password: { type: DataTypes.STRING },
     phone: { type: DataTypes.STRING },
     role: { type: DataTypes.STRING, defaultValue: "user" },
-    logo: { type: DataTypes.STRING, defaultValue: "defaultUserLogo.png" }
+    logo: { type: DataTypes.STRING, defaultValue: "defaultUserLogo.png" },
+    nick: { type: DataTypes.STRING, defaultValue: "" },
+    lfpOrNick: { type: DataTypes.STRING, defaultValue: "lfp" },
+    about: { type: DataTypes.TEXT, defaultValue: "" },
 })
 
 module.exports = {
