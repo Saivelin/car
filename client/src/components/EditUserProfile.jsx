@@ -95,11 +95,11 @@ const EditUserProfile = ({ userInf }) => {
                     <input type="text" name="lfp" placeholder="ФИО" className="editUserProfile__input" defaultValue={userInf?.lfp} />
                     <div className="editUserProfile__radioWrapper">
                         <div className="editUserProfile__radioWrapper-itemWrapper">
-                            <input checked={usingName == "lfp" ? "checked" : ""} id="lfp" type="radio" name="dataDisplay" className="editUserProfile__input" ref={useLfp} onChange={(e) => { setUsingName(e.target.id) }} />
+                            <input defaultChecked={usingName == "lfp" ? "checked" : ""} id="lfp" type="radio" name="dataDisplay" className="editUserProfile__input" ref={useLfp} onChange={(e) => { setUsingName(e.target.id) }} />
                             <label htmlFor="lfp" className="editUserProfile__label">Отображать ФИО в профиле</label>
                         </div>
                         <div className="editUserProfile__radioWrapper-itemWrapper">
-                            <input checked={usingName == "nick" ? "checked" : ""} id="nick" type="radio" name="dataDisplay" className="editUserProfile__input" ref={useNick} onChange={(e) => { setUsingName(e.target.id) }} />
+                            <input defaultChecked={usingName == "nick" ? "checked" : ""} id="nick" type="radio" name="dataDisplay" className="editUserProfile__input" ref={useNick} onChange={(e) => { setUsingName(e.target.id) }} />
                             <label htmlFor="nick" className="editUserProfile__label">Отображать только ник</label>
                         </div>
                     </div>
